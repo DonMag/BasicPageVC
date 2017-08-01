@@ -75,3 +75,23 @@ class ModelController: NSObject, UIPageViewControllerDataSource {
 
 }
 
+extension ModelController {
+	func presentationCount(for pageViewController: UIPageViewController) -> Int {
+		
+		return pageData.count
+		
+	}
+	
+	func presentationIndex(for pageViewController: UIPageViewController) -> Int {
+		
+		guard let firstVC = pageViewController.viewControllers?.first else {
+			return 0
+		}
+		
+		let idx = self.indexOfViewController(firstVC as! DataViewController)
+		
+		return idx == NSNotFound ? 0 : idx
+		
+	}
+}
+
